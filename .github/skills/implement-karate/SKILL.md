@@ -59,6 +59,23 @@ Reutilizar scaffold existente
 - Para Karate `1.5.x`, `pom.xml` debe usar `io.karatelabs:karate-junit5`
 - Los imports Java pueden seguir en `com.intuit.karate.*` en la serie `1.5.x`
 - `pom.xml` debe incluir `<testResources>` con `src/test/java` excluyendo `**/*.java`
+- **No hardcodear paths de endpoints**: los paths de API (e.g. `/productsList`, `/brandsList`) NUNCA van literales en el `.feature`. Deben definirse como variables en `karate-config.js` (dentro de un objeto `paths` por dominio) y usarse en el feature como `Given path paths.productsList`. Ejemplo en config:
+  ```js
+  paths: {
+    productsList: '/api/productsList',
+    brandsList: '/api/brandsList'
+  }
+  ```
+  Ejemplo en feature:
+  ```gherkin
+  Given path paths.productsList
+  ```
+- **Payloads desde archivos JSON**: los features NUNCA deben definir payloads inline ni construir JSON con `def` dentro del feature. En su lugar deben leer el contenido desde archivos `.json` ubicados en `src/test/resources/data/<dominio>/` usando `read('classpath:data/<dominio>/<archivo>.json')`. Ejemplo:
+  ```gherkin
+  * def payload = read('classpath:data/automationexercise/searchProduct.json')
+  And request payload
+  ```
+
 
 ## Regla obligatoria de wrapper
 
