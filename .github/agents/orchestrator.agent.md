@@ -3,6 +3,8 @@ name: Orchestrator
 description: Orquesta el flujo completo ASDD para el template definitivo Karate: Spec → Implementación Karate.
 tools:
   - read/readFile
+  - edit/editFiles
+  - edit/createFile
   - search/listDirectory
   - search
   - agent
