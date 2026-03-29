@@ -14,7 +14,7 @@ Este repositorio define un template ASDD para proyectos Karate con baseline fijo
 ## Flujo
 
 ```text
-[Orchestrator] → [Spec Generator] → [Karate Engineer] → [QA Agent]
+[Orchestrator] → [Spec Generator] → [Karate Engineer]
 ```
 
 ## Convenciones fijas
@@ -52,8 +52,8 @@ mvnw.cmd
 .mvn/wrapper/
 src/test/java/karate-config.js
 src/test/java/logback-test.xml
-src/test/java/<base-package-path>/<dominio>/<Dominio>Runner.java
-src/test/java/<base-package-path>/<dominio>/<flujo>.feature
+src/test/java/template/<dominio>/<Dominio>Runner.java
+src/test/java/template/<dominio>/<flujo>.feature
 src/test/resources/data/<dominio>/<flujo>/
 src/test/resources/helpers/
 src/test/resources/schemas/<dominio>/
@@ -61,7 +61,6 @@ src/test/resources/schemas/<dominio>/
 
 ## Reglas globales
 
-- Si el scaffold Karate no existe, el agente puede generarlo incluyendo Maven Wrapper
 - No automatizar sin spec aprobada
 - No generar código de producto
 - Reutilizar helpers, data files y schemas antes de duplicar

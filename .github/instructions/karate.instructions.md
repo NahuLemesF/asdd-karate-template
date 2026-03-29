@@ -27,8 +27,8 @@ mvnw.cmd
 .mvn/wrapper/
 src/test/java/karate-config.js
 src/test/java/logback-test.xml
-src/test/java/<base-package-path>/<dominio>/<Dominio>Runner.java
-src/test/java/<base-package-path>/<dominio>/<flujo>.feature
+src/test/java/template/<dominio>/<Dominio>Runner.java
+src/test/java/template/<dominio>/<flujo>.feature
 src/test/resources/data/<dominio>/<flujo>/*.json
 src/test/resources/helpers/auth/*.feature
 src/test/resources/helpers/common.js
@@ -43,7 +43,7 @@ src/test/resources/schemas/<dominio>/*.json
 - Un runner por dominio.
 - **Runner y features deben vivir en la misma carpeta de dominio** (nunca separados).
 - El runner usa `Karate.run().relativeTo(getClass())` para descubrir features automáticamente.
-- El package Java del runner debe derivarse del `groupId` base del proyecto cuando exista.
+- El package Java del runner siempre es `template.<dominio>` (carpeta `src/test/java/template/<dominio>/`).
 - `karate-config.js` y `logback-test.xml` viven en `src/test/java/`, NO en la raíz del proyecto.
 - `pom.xml` debe incluir `<testResources>` con `src/test/java` (excluyendo `**/*.java`) para que los `.feature` estén en el classpath.
 
@@ -73,13 +73,12 @@ La estrategia debe resolverse desde `karate-config.js` y helpers de auth.
 
 ## Reglas de implementación
 
-- El scaffold pre-built ya existe en el repo. Si los archivos base (`pom.xml`, `mvnw`, `karate-config.js`, helpers) ya están, reutilízalos.
-- Si no existe el scaffold, créalo siguiendo la estructura del archetype oficial de Karate.
+- El scaffold pre-built ya existe en el repo. Reutilizar los archivos base (`pom.xml`, `mvnw`, `karate-config.js`, helpers) directamente.
 - Si ya existe, reutilízalo y ajústalo sin romperlo.
 - El scaffold Maven debe incluir wrapper funcional.
 - Preferir generar Maven Wrapper con la tooling estándar de Maven, no inventar scripts manuales.
 - No mezclar coordenadas viejas `com.intuit.karate` en `pom.xml` con Karate `1.5.x`.
-- Las features `.feature` viven junto al runner en `src/test/java/<package>/<dominio>/`, NO en `src/test/resources/features/`.
+- Las features `.feature` viven junto al runner en `src/test/java/template/<dominio>/`, NO en `src/test/resources/features/`.
 - Reutiliza `helpers`, `schemas`, `Background`, `call` y `callonce`.
 - Usa `data/` para payloads y datasets reutilizables.
 - Usa `schemas/` para validaciones de contrato reutilizables.

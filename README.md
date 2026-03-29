@@ -3,7 +3,7 @@
 Framework de automatización asistida por IA para convertir `requirements.md` en un proyecto Karate funcional siguiendo un baseline estable y reusable entre proyectos.
 
 ```text
-Requerimiento → Spec de Automatización → Scaffold Maven/Karate → Features por dominio → QA Assets
+Requerimiento → Spec de Automatización → Features por dominio
 ```
 
 ## Baseline del template
@@ -21,25 +21,18 @@ Este template queda aterrizado a estas decisiones:
 - **Ambientes adicionales:** opcionales, solo si el proyecto o el requerimiento los piden explícitamente
 - **Auth configurable:** `bearer`, `oauth`, `login`
 
-## Qué genera ASDD
+## Scaffold pre-built
 
-Si el repo destino no tiene estructura Karate, el framework debe poder generar:
+El scaffold Karate ya está incluido en el template. Al implementar un feature, solo se agregan los artefactos del dominio:
 
-- `pom.xml`
-- `mvnw`
-- `mvnw.cmd`
-- `.mvn/wrapper/**`
-- `karate-config.js`
-- `src/test/java/<base-package-path>/runners/*.java`
-- `src/test/resources/features/**`
-- `src/test/resources/data/**`
-- `src/test/resources/helpers/**`
-- `src/test/resources/schemas/**`
+- `src/test/java/template/<dominio>/<Dominio>Runner.java`
+- `src/test/java/template/<dominio>/<flujo>.feature`
+- `src/test/resources/data/<dominio>/**`
+- `src/test/resources/schemas/<dominio>/**`
 
 Y, además:
 
 - specs en `.github/specs/`
-- artefactos QA en `docs/output/qa/`
 
 ## Flujo
 
@@ -65,7 +58,6 @@ Luego:
 
 ```text
 /implement-karate nombre-feature
-/qa-task nombre-feature
 ```
 
 > Sin `status: APPROVED` no se crea ni modifica automatización Karate.
@@ -79,30 +71,23 @@ Luego:
 ├── mvnw.cmd
 ├── .mvn/
 │   └── wrapper/
-├── karate-config.js
 ├── src/
 │   └── test/
 │       ├── java/
-│       │   └── <base-package-path>/
-│       │       └── runners/
-│       │           ├── <Domain>Runner.java
-│       │           └── <AnotherDomain>Runner.java
+│       │   ├── karate-config.js
+│       │   ├── logback-test.xml
+│       │   └── template/
+│       │       └── <dominio>/
+│       │           ├── <Dominio>Runner.java
+│       │           └── <flujo>.feature
 │       └── resources/
-│           ├── features/
-│           │   ├── <dominio>/
-│           │   │   ├── <flujo-a>.feature
-│           │   │   ├── <flujo-b>.feature
-│           │   │   └── <flujo-c>.feature
-│           │   └── <otro-dominio>/
 │           ├── data/
-│           │   ├── <dominio>/
-│           │   └── <otro-dominio>/
+│           │   └── <dominio>/
 │           ├── helpers/
 │           │   ├── auth/
 │           │   └── common.js
 │           └── schemas/
-│               ├── <dominio>/
-│               └── <otro-dominio>/
+│               └── <dominio>/
 └── .github/
 ```
 

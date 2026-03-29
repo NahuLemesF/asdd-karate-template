@@ -7,8 +7,8 @@
 Basada en el archetype oficial de Karate. Runner y feature viven en la misma carpeta de dominio.
 
 ```text
-src/test/java/<base-package-path>/<dominio>/<Dominio>Runner.java
-src/test/java/<base-package-path>/<dominio>/<feature>.feature
+src/test/java/template/<dominio>/<Dominio>Runner.java
+src/test/java/template/<dominio>/<feature>.feature
 src/test/resources/data/<dominio>/<feature>/*.json
 src/test/resources/helpers/*.js
 src/test/java/karate-config.js
