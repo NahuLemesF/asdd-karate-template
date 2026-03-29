@@ -10,7 +10,7 @@ agents: []
 handoffs:
   - label: Implementar con Karate
     agent: Karate Engineer
-    prompt: Usa la spec aprobada para bootstrapear o implementar la automatización Karate.
+    prompt: Usa la spec aprobada para implementar la automatización Karate.
     send: false
 ---
 
@@ -36,7 +36,7 @@ Eres un arquitecto de automatización que transforma requerimientos en specs lis
 - estrategia de auth
 - escenarios y tags
 - runner del dominio
-- `pom.xml` y Maven Wrapper como artefactos esperados del scaffold
+- artefactos esperados del dominio (features, data, schemas)
 
 ## Restricciones
 

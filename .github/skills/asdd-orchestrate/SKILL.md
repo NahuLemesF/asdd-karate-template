@@ -20,9 +20,8 @@ argument-hint: "<nombre-feature> | status"
 2. Si no existe → ejecuta `/generate-spec`
 3. Si está `DRAFT` → pide aprobación
 4. Si está `APPROVED` → ejecuta `/implement-karate`
-5. Luego ejecuta QA complementario
-6. Actualiza la spec a `IMPLEMENTED`
+5. Actualiza la spec a `IMPLEMENTED`
 
 ## Regla adicional
 
-Si el scaffold Karate no existe, la fase de implementación debe crearlo.
+El scaffold Karate ya está pre-built en el template. La fase de implementación solo agrega features, data, schemas y runners por dominio.

@@ -22,5 +22,4 @@ Inicia el flujo completo ASDD Karate.
 
 1. `Spec Generator`
 2. aprobación humana
-3. `Karate Engineer` para scaffold, Maven Wrapper e implementación
-4. `QA Agent`
+3. `Karate Engineer` para implementación
