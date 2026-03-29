@@ -1,6 +1,6 @@
 ---
 name: implement-karate
-description: Bootstrapea o implementa un proyecto Karate sobre Maven + Java 17 organizado por dominio.
+description: Implementa features Karate sobre el scaffold pre-built del template.
 argument-hint: "<nombre-feature>"
 ---
 
@@ -18,42 +18,39 @@ argument-hint: "<nombre-feature>"
 
 1. Leer `.github/specs/<feature>.spec.md`
 2. Leer `.github/instructions/karate.instructions.md`
-3. Revisar si ya existe scaffold Karate
 
-## Si el scaffold no existe
+## Scaffold pre-built
 
-El scaffold base ya está pre-built en el repo template. Verifica que estos archivos existan:
+El scaffold ya existe en el repo template. No es necesario verificarlo ni recrearlo. Los archivos base son:
 
 - `pom.xml` — con `<testResources>` para `src/test/java` excluyendo `**/*.java`
 - `mvnw`, `mvnw.cmd`, `.mvn/wrapper/maven-wrapper.properties`
 - `src/test/java/karate-config.js`
 - `src/test/java/logback-test.xml`
-- `src/test/java/<base-package-path>/` — package placeholder
+- `src/test/java/template/` — package base del template
 - `src/test/resources/helpers/auth/` — auth.feature, oauth.feature, login.feature
 - `src/test/resources/helpers/common.js`
 - `src/test/resources/data/`
 - `src/test/resources/schemas/`
 
-Si faltan, generarlos siguiendo la estructura del archetype oficial de Karate.
-
 ## Orden recomendado
 
 ```text
-Verificar scaffold Maven (ya pre-built)
-→ Ajustar package/groupId si necesario
+Reutilizar scaffold existente
+→ Verificar que el package base sea `template`
 → config (karate-config.js ya en src/test/java/)
 → auth/common helpers (ya en src/test/resources/helpers/)
 → data files en src/test/resources/data/<dominio>/
 → schemas en src/test/resources/schemas/<dominio>/
-→ features + runner del dominio en src/test/java/<package>/<dominio>/
+→ features + runner del dominio en src/test/java/template/<dominio>/
 ```
 
 ## Convenciones
 
 - Organización por dominio
-- **Runner y features viven en la misma carpeta**: `src/test/java/<package>/<dominio>/`
+- **Runner y features viven en la misma carpeta**: `src/test/java/template/<dominio>/`
 - El runner usa `Karate.run().relativeTo(getClass())` para descubrir features
-- Package del runner: `[base.package].[dominio]` (no `.runners`)
+- Package del runner: `template.<dominio>` (no `.runners`, no derivar del `groupId`)
 - `karate-config.js` vive en `src/test/java/`, NO en la raíz
 - Tags estándar del template
 - Auth configurable: `bearer`, `oauth`, `login`

@@ -85,9 +85,9 @@ CRITERIO-1.3: [nombre]
 ### Dominio
 
 - Dominio principal: `[dominio]`
-- Runner esperado: `src/test/java/<base-package-path>/[dominio]/[Domain]Runner.java`
-- Package esperado del runner: `[base.package].[dominio]`
-- Features esperadas: `src/test/java/<base-package-path>/[dominio]/[flujo].feature`
+- Runner esperado: `src/test/java/template/[dominio]/[Domain]Runner.java`
+- Package esperado del runner: `template.[dominio]`
+- Features esperadas: `src/test/java/template/[dominio]/[flujo].feature`
 
 ### Sistema bajo prueba
 
@@ -105,8 +105,8 @@ CRITERIO-1.3: [nombre]
 | Wrapper metadata | `.mvn/wrapper/` | distribución del wrapper |
 | Config | `src/test/java/karate-config.js` | envs, auth y baseUrl |
 | Logback | `src/test/java/logback-test.xml` | configuración de logging |
-| Runner | `src/test/java/<base-package-path>/[dominio]/[Domain]Runner.java` | ejecución por dominio |
-| Feature | `src/test/java/<base-package-path>/[dominio]/[flujo].feature` | escenarios del flujo |
+| Runner | `src/test/java/template/[dominio]/[Domain]Runner.java` | ejecución por dominio |
+| Feature | `src/test/java/template/[dominio]/[flujo].feature` | escenarios del flujo |
 | Data | `src/test/resources/data/[dominio]/[flujo]/` | payloads, queries, datasets |
 | Schemas | `src/test/resources/schemas/[dominio]/` | validación de contratos |
 | Auth helper | `src/test/resources/helpers/auth/` | bearer, oauth o login |
@@ -137,23 +137,11 @@ CRITERIO-1.3: [nombre]
 
 ### Notas de implementación
 
-- Si el scaffold no existe, se debe generar
+- El scaffold ya está pre-built en el repo
 - Los tags controlan ejecución; las carpetas controlan organización
 - Reutilizar helpers, data y schemas antes de duplicar
 
 ## 3. LISTA DE TAREAS
-
-### Scaffold
-
-- [ ] Crear `pom.xml` si no existe
-- [ ] Crear `mvnw`, `mvnw.cmd` y `.mvn/wrapper/`
-- [ ] Crear `karate-config.js` con `qa` por defecto
-- [ ] Agregar ambientes extra solo si el requirement o el proyecto los necesitan
-
-### Helpers
-
-- [ ] Crear `helpers/auth/` para estrategia `bearer`, `oauth` o `login`
-- [ ] Crear `helpers/common.js`
 
 ### Dominio
 
@@ -164,9 +152,7 @@ CRITERIO-1.3: [nombre]
 - [ ] Crear schemas reutilizables
 - [ ] Etiquetar escenarios con la convención estándar
 
-### QA
+### Validación
 
-- [ ] Ejecutar `/gherkin-case-generator`
-- [ ] Ejecutar `/risk-identifier`
 - [ ] Validar trazabilidad entre criterios y escenarios Karate
 - [ ] Validar selección correcta de tags

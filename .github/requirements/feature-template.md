@@ -68,7 +68,7 @@ Si aun no esta definida, el template debe dejar preparado el proyecto para sopor
 3. Los datos deben quedar en `src/test/resources/data/[dominio]/`.
 4. Los schemas deben quedar en `src/test/resources/schemas/[dominio]/`.
 5. Deben usarse los tags del template.
-6. El scaffold Karate ya está pre-built en el repo. Si no existe, debe crearse incluyendo `pom.xml`, `mvnw`, `mvnw.cmd` y `.mvn/wrapper/`.
+6. El scaffold Karate ya está pre-built en el repo.
 
 ## Fuera de alcance
 

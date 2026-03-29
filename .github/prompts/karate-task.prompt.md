@@ -1,6 +1,6 @@
 ---
 name: karate-task
-description: Bootstrapea o implementa una automatización Karate dentro del template definitivo.
+description: Implementa una automatización Karate dentro del template definitivo.
 argument-hint: "<nombre-feature>"
 agent: Karate Engineer
 tools:
@@ -29,7 +29,4 @@ Implementa la automatización Karate para el feature indicado.
 
 1. Lee `.github/specs/${input:featureName}.spec.md`
 2. Si no está `APPROVED`, detente
-3. Revisa si ya existe scaffold Karate
-4. Si no existe, créalo incluyendo Maven Wrapper (`mvnw`, `mvnw.cmd`, `.mvn/wrapper/`)
-5. Si existe `pom.xml` pero no wrapper, genera el wrapper
-6. Implementa helpers, data, schemas, features y runner del dominio
+3. Implementa helpers, data, schemas, features y runner del dominio

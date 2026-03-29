@@ -18,12 +18,7 @@ Guía compartida para todos los agentes del template definitivo de Karate.
 → .github/specs/<feature>.spec.md
 
 [2] Karate Engineer
-→ scaffold Maven/Karate si no existe
-→ Maven Wrapper si no existe
 → features, data, helpers, schemas, runners
-
-[3] QA Agent
-→ gherkin, riesgos, cobertura, performance opcional
 ```
 
 ## Contexto obligatorio a cargar
@@ -39,7 +34,7 @@ Guía compartida para todos los agentes del template definitivo de Karate.
 ## Reglas de oro
 
 1. Sin spec `APPROVED`, no hay implementación.
-2. Si falta scaffold Karate, se genera incluyendo Maven Wrapper.
+2. El scaffold Karate ya está pre-built en el template.
 3. Todo se organiza por dominio.
 4. Los tags controlan ejecución y prioridad, no estructura de carpetas.
 5. `karate-config.js` es la única fuente de ambientes y auth.
@@ -58,8 +53,8 @@ mvnw.cmd
 .mvn/wrapper/
 src/test/java/karate-config.js
 src/test/java/logback-test.xml
-src/test/java/<base-package-path>/<dominio>/<Dominio>Runner.java
-src/test/java/<base-package-path>/<dominio>/<flujo>.feature
+src/test/java/template/<dominio>/<Dominio>Runner.java
+src/test/java/template/<dominio>/<flujo>.feature
 src/test/resources/data/<dominio>/<flujo>/
 src/test/resources/helpers/
 src/test/resources/schemas/<dominio>/

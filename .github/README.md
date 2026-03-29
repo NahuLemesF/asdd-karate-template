@@ -10,7 +10,7 @@ Esta versión de ASDD es un template **definitivo** para proyectos Karate con ba
 - runners por dominio
 
 ```text
-Requerimiento → Spec → Scaffold Karate → Features por dominio → QA
+Requerimiento → Spec → Features por dominio
 ```
 
 ## Qué problema resuelve
@@ -18,9 +18,7 @@ Requerimiento → Spec → Scaffold Karate → Features por dominio → QA
 Que en un proyecto nuevo puedas entregar solo un `requirements.md` y que ASDD:
 
 1. genere la spec
-2. cree el scaffold Karate si no existe
-3. implemente features, data files, helpers, schemas y runners
-4. produzca artefactos QA de soporte
+2. implemente features, data files, helpers, schemas y runners sobre el scaffold existente
 
 ## Requisitos
 
@@ -98,26 +96,9 @@ status: APPROVED
 /implement-karate <feature>
 ```
 
-Si el repo aún no tiene proyecto Karate, el agente debe bootstrapear:
-
-- `pom.xml` — con `<testResources>` configurado
-- `mvnw`, `mvnw.cmd`, `.mvn/wrapper/`
-- `src/test/java/karate-config.js`
-- `src/test/java/logback-test.xml`
-- `src/test/java/<base-package-path>/` — package base
-- `src/test/resources/data/`
-- `src/test/resources/helpers/`
-- `src/test/resources/schemas/`
-
 Cuando un dominio se implementa, runner y features van juntos:
-- `src/test/java/<base-package-path>/<dominio>/<Dominio>Runner.java`
-- `src/test/java/<base-package-path>/<dominio>/<flujo>.feature`
-
-### Paso 5 — QA complementario
-
-```text
-/qa-task <feature>
-```
+- `src/test/java/template/<dominio>/<Dominio>Runner.java`
+- `src/test/java/template/<dominio>/<flujo>.feature`
 
 ## Estructura exacta esperada
 
@@ -135,7 +116,7 @@ Basada en el archetype oficial de Karate. Runner y feature viven en la misma car
 │       ├── java/
 │       │   ├── karate-config.js
 │       │   ├── logback-test.xml
-│       │   └── <base-package-path>/
+│       │   └── template/
 │       │       └── <dominio>/
 │       │           ├── <Dominio>Runner.java
 │       │           └── <flujo>.feature
@@ -154,17 +135,16 @@ Basada en el archetype oficial de Karate. Runner y feature viven en la misma car
 ./mvnw test
 ./mvnw test -Dkarate.env=qa
 ./mvnw test -Dkarate.options="--tags @smoke"
-./mvnw test -Dtest="com.karate.template.<dominio>.<Dominio>Runner"
+./mvnw test -Dtest="template.<dominio>.<Dominio>Runner"
 ```
 
 ## Agentes disponibles
 
 | Agente | Responsabilidad |
 |---|---|
-| `@Orchestrator` | Coordina spec → scaffold → Karate → QA |
+| `@Orchestrator` | Coordina spec → implementación Karate |
 | `@Spec Generator` | Convierte requerimientos en specs de automatización |
 | `@Karate Engineer` | Genera y mantiene el proyecto Karate |
-| `@QA Agent` | Gherkin, riesgos, cobertura y performance opcional |
 
 ## Skills disponibles
 
@@ -172,21 +152,17 @@ Basada en el archetype oficial de Karate. Runner y feature viven en la misma car
 |---|---|
 | `/asdd-orchestrate` | flujo completo |
 | `/generate-spec` | spec de automatización |
-| `/implement-karate` | scaffold + implementación Karate |
-| `/gherkin-case-generator` | escenarios y datos |
-| `/risk-identifier` | matriz de riesgos |
-| `/automation-flow-proposer` | backlog de automatización |
-| `/performance-analyzer` | plan de performance |
+| `/implement-karate` | implementación Karate |
 
 ## Reglas de oro
 
 1. No automatizar sin spec `APPROVED`.
 2. No generar código de producto.
-3. Si falta scaffold Karate, se crea incluyendo Maven Wrapper.
+3. El scaffold Karate ya está pre-built en el template.
 4. Organizar por dominio, no por tipo de suite.
 5. Los tags deciden ejecución; las carpetas deciden ownership y mantenimiento.
 6. Auth y ambiente salen de `karate-config.js`, nunca hardcodeados.
-7. El package de los runners debe alinearse con el `groupId` del proyecto, no quedar como `package runners;` plano salvo que eso se haya pedido explícitamente.
+7. El package de los runners es `template.<dominio>`.
 
 ## Referencia de versión
 
