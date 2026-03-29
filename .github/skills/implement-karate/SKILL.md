@@ -75,6 +75,20 @@ Reutilizar scaffold existente
   * def payload = read('classpath:data/automationexercise/searchProduct.json')
   And request payload
   ```
+- **Form fields en bloque, NUNCA campo a campo**: cuando un endpoint recibe `form-data`, se DEBE usar `And form fields <variable>` (plural) pasándole el objeto JSON completo leído del data file. NUNCA usar `And form field` (singular) repetido por cada campo. Ejemplo correcto:
+  ```gherkin
+  * def createData = read('classpath:data/automationexercise/user/create-account.json')
+  Given path paths.createAccount
+  And form fields createData
+  When method post
+  ```
+  Ejemplo **PROHIBIDO** (no generar esto):
+  ```gherkin
+  And form field name = createData.name
+  And form field email = createData.email
+  And form field password = createData.password
+  ...
+  ```
 
 
 ## Regla obligatoria de wrapper
